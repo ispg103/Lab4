@@ -1,0 +1,1 @@
+holap, para resetear el commit es con git reset --hard 

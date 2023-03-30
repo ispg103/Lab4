@@ -1,21 +1,16 @@
-import styles from './card.css';
+import styles from './card.css'
 
 export enum Attribute {
     "name" = "name",
-    "gender" = "gender",
-    "status" = "status",
 }
 
 class Card extends HTMLElement {
     name?: string;
-    gender?: string;
-    status?: string;
+    roles?: string;
 
     static get observedAttributes() {
         const attrs: Record<Attribute, null> = {
-            gender: null,
             name: null,
-            status: null,
         };
         return Object.keys(attrs);
     }
@@ -29,20 +24,15 @@ class Card extends HTMLElement {
         this.render();
     }
 
-    attributeChangedCallback(
-        propName: Attribute,
-        _: string,
-        newValue: string
-        ) {
-            switch (propName) {
-
-                default:
-                this[propName] = newValue;
-                break;
-            }
-
-            this.render();
+    attributeChangedCallback(propName: Attribute, oldValue: undefined, newValue: string){
+        switch(propName){
+        default:
+        this[propName] = newValue;
+        this.render();
+        break;
         }
+        this.render()
+    }
 
         render() {
             if (this.shadowRoot) {
@@ -50,11 +40,9 @@ class Card extends HTMLElement {
                 <style>
                 ${styles}
                 </style>
-                
+
                 <section>
-                <h1>Name: ${this.name}</h1>
-                <b><p class="gender">Gender: ${this.gender}</p></b>
-                <p>Status: ${this.status}</p>
+                <h1>${this.name}</h1>
                 </section>
                 `;
             }

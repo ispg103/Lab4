@@ -1,10 +1,10 @@
-export async function getapi() {
+export async function get_api() {
 	try {
-			const rickandmorty = await fetch('https://rickandmortyapi.com/api/character/').then((res) => {
+			const rm = await fetch('https://rickandmortyapi.com/api/character/2').then((res) => {
 				return res.json();
 			});
-			return rickandmorty.data;
+			return rm.data;
 	} catch (error) {
-		console.log(error);	
+		console.log(error);
 	}
 }

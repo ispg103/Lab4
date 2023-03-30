@@ -1,9 +1,9 @@
 import "./components/index";
-import {getapi} from "./components/data"
+import {get_api} from "./components/data"
 import Card, { Attribute } from "./components/card/card"
 
 class AppContainer extends HTMLElement {
-    rickandmorty: Card[] = [];
+    List: Card[] = [];
 
     constructor() {
         super();
@@ -11,28 +11,26 @@ class AppContainer extends HTMLElement {
     }
 
     async connectedCallback() {
-        const dataRM = await getapi();
-        dataRM.forEach((data: any) => {
+        const data = await get_api();
+        data.forEach((data: any) => {
             console.log(data);
         });
 
-        dataRM.forEach((data: any) => {
-            const rickandmortyCard = this.ownerDocument.createElement("my-card") as Card;
-            rickandmortyCard.setAttribute(Attribute.name, data.results.name);
-            rickandmortyCard.setAttribute(Attribute.status, data.results.status);
-            rickandmortyCard.setAttribute(Attribute.gender, data.results.gender);
-                this.rickandmorty.push(rickandmortyCard);
+        data.forEach((card: any) => {
+            const rmCard = this.ownerDocument.createElement("my-card") as Card;
+            rmCard.setAttribute(Attribute.name, card.name);
+                this.List.push(rmCard);
         });
-        this.render(this.rickandmorty);
+        this.render(this.List);
     }
 
-    render(rickandmorty:any) {
-        const rickandmortyCards = this.ownerDocument.createElement("section")
-        rickandmortyCards.className = "RMSection"
-        this.rickandmorty.forEach((rickandmortyCard) => {
-            rickandmortyCards.appendChild(rickandmortyCard)
+    render(List:any) {
+        const rmCards = this.ownerDocument.createElement("section")
+        rmCards.className = "rmSection"
+        this.List.forEach((rmCard) => {
+            rmCards.appendChild(rmCard)
         });
-        this.shadowRoot?.appendChild(rickandmortyCards);
+        this.shadowRoot?.appendChild(rmCards);
     }
 }
 

@@ -17,20 +17,21 @@ class AppContainer extends HTMLElement {
         });
 
         data.forEach((card: any) => {
-            const rmCard = this.ownerDocument.createElement("my-card") as Card;
-            rmCard.setAttribute(Attribute.name, card.name);
-                this.List.push(rmCard);
+            const weaponsCard = this.ownerDocument.createElement("my-card") as Card;
+            weaponsCard.setAttribute(Attribute.name, card.displayName);
+            weaponsCard.setAttribute(Attribute.icon, card.displayIcon);
+                this.List.push(weaponsCard);
         });
         this.render(this.List);
     }
 
     render(List:any) {
-        const rmCards = this.ownerDocument.createElement("section")
-        rmCards.className = "rmSection"
-        this.List.forEach((rmCard) => {
-            rmCards.appendChild(rmCard)
+        const weaponsCards = this.ownerDocument.createElement("section")
+        weaponsCards.className = "weaponsSection"
+        this.List.forEach((weaponsCard) => {
+            weaponsCards.appendChild(weaponsCard)
         });
-        this.shadowRoot?.appendChild(rmCards);
+        this.shadowRoot?.appendChild(weaponsCards);
     }
 }
 

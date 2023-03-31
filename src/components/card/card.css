@@ -1,3 +1,28 @@
+section{
+    display: flex;
+    flex-direction: column;
+    border: 1px solid rgb(173, 173, 173);
+    border-radius: 5px;
+    float: left;
+    margin-top: 60px;
+    margin-left: 85px;
+    margin-bottom: 50px;
+    width: 250px;
+    height: 180px;
+}
+
 h1{
-    font-family: Verdana;
+    font-family:'Trebuchet MS';
+    font-size: larger;
+    display: flex;
+    justify-content: center;
+    background-color: darkgray;
+    height: 50px;
+    margin-bottom: 0;
+}
+
+img{
+    width: 130px;
+    display: block;
+    margin: auto;
 }

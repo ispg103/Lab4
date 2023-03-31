@@ -1,9 +1,9 @@
 export async function get_api() {
 	try {
-			const rm = await fetch('https://rickandmortyapi.com/api/character/2').then((res) => {
+			const weapon = await fetch('https://valorant-api.com/v1/weapons').then((res) => {
 				return res.json();
 			});
-			return rm.data;
+			return weapon.data;
 	} catch (error) {
 		console.log(error);
 	}

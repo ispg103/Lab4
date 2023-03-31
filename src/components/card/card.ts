@@ -2,15 +2,17 @@ import styles from './card.css'
 
 export enum Attribute {
     "name" = "name",
+    "icon" = "icon",
 }
 
 class Card extends HTMLElement {
     name?: string;
-    roles?: string;
+    icon?: string
 
     static get observedAttributes() {
         const attrs: Record<Attribute, null> = {
             name: null,
+            icon: null,
         };
         return Object.keys(attrs);
     }
@@ -43,6 +45,7 @@ class Card extends HTMLElement {
 
                 <section>
                 <h1>${this.name}</h1>
+                <img src= "${this.icon}"
                 </section>
                 `;
             }
